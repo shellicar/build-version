@@ -1,0 +1,15 @@
+{
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon -w '../src/**/*.ts' -e .ts -x vite",
+    "check": "tsc"
+  },
+  "devDependencies": {
+    "@shellicar/build-version": "workspace:^",
+    "nodemon": "^3.1.9",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.6",
+    "vite-plugin-inspect": "^0.10.6"
+  }
+}
