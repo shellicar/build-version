@@ -6,7 +6,7 @@ const createExecCommand = (debug: boolean) => {
   return (command: string): string | null => {
     try {
       if (debug) {
-        console.log(`Executing git command: ${command}`)
+        console.log(`Executing git command: ${command}`);
       }
       const result = execSync(command, { encoding: 'utf8' }).trim();
       if (debug) {
@@ -57,21 +57,15 @@ export const createGitCalculator = (options?: { debug?: boolean }) => {
 
   return () => {
     const branch = execCommand('git rev-parse --abbrev-ref HEAD') ?? 'unknown';
-    const baseVersion = getLatestTag(); // returns null if no tags
+    const baseVersion = getLatestTag();
 
-    const commitCount = baseVersion === null
-      ? getTotalCommitCount()
-      : getCommitsSinceTag(baseVersion);
+    const commitCount = baseVersion === null ? getTotalCommitCount() - 1 : getCommitsSinceTag(baseVersion);
 
-    // Only use exact tag version on main when we have a tag and it's the current commit
     if (branch === 'main' && baseVersion !== null && commitCount === 1) {
       return baseVersion;
     }
 
-    // Use fallback version only when parsing version components
-    const [major, minor, patch] = (baseVersion ?? FALLBACK_VERSION)
-      .split('.')
-      .map(n => Number.parseInt(n, 10));
+    const [major, minor, patch] = (baseVersion ?? FALLBACK_VERSION).split('.').map((n) => Number.parseInt(n, 10));
 
     if (branch === 'main') {
       return `${major}.${minor}.${patch + commitCount - 1}`;

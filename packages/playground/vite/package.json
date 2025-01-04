@@ -1,15 +1,19 @@
 {
+  "name": "@shellicar/build-version-vite",
   "private": true,
   "type": "module",
   "scripts": {
     "dev": "nodemon -w '../src/**/*.ts' -e .ts -x vite",
+    "build": "vite build",
+    "start": "vite preview",
     "check": "tsc"
   },
   "devDependencies": {
     "@shellicar/build-version": "workspace:^",
+    "@tsconfig/node20": "^20.1.4",
     "nodemon": "^3.1.9",
     "typescript": "^5.7.2",
-    "vite": "^6.0.6",
+    "vite": "^6.0.7",
     "vite-plugin-inspect": "^0.10.6"
   }
 }

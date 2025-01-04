@@ -1,11 +1,5 @@
-interface VersionInfo {
-  buildDate: string;
-  branch: string;
-  sha: string;
-  shortSha: string;
-  commitDate: string;
-  version: string;
-}
+import type { VersionInfo } from './types';
+
 const versionInfo: VersionInfo = {
   branch: '',
   buildDate: '',

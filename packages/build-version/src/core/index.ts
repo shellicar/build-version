@@ -1,9 +1,10 @@
 import { execSync } from 'node:child_process';
 import type { UnpluginFactory } from 'unplugin';
 import { createUnplugin } from 'unplugin';
+import { defaults } from './defaults';
+import { createGitCalculator } from './git';
+import { createGitversionCalculator } from './gitversion';
 import type { Options, VersionCalculator } from './types';
-import { createGitCalculator } from './calculators/git';
-import { createGitversionCalculator } from './calculators/gitversion';
 
 const execCommand = (command: string): string => {
   return execSync(command, { encoding: 'utf8' }).trim();
@@ -35,30 +36,49 @@ const generateVersionInfo = (calculator: VersionCalculator) => {
   };
 };
 
-export const versionPluginFactory: UnpluginFactory<Options> = (options?: Options) => {
-  const importFile = '@shellicar/build-version/version.json';
-  console.log('options', options);
+const versionPluginFactory: UnpluginFactory<Options> = (inputOptions: Options, meta) => {
+  const options = {
+    ...defaults,
+    ...inputOptions,
+  };
+  const log = (message: any, ...args: any) => {
+    if (options.debug) {
+      console.log('[version]:', message, ...args);
+    }
+  };
+
+  const versionPattern = new RegExp(options.versionPath);
+  const MODULE_ID = '@shellicar/build-version/version';
+
+  const matchVersion = (id: string) => {
+    if (meta.framework === 'vite') {
+      return versionPattern.test(id);
+    }
+    return id === MODULE_ID;
+  };
+
+  log({ options });
   const calculator = getCalculator(options);
 
   return {
-    name: 'version-json',
+    name: 'version',
     loadInclude(id) {
-      return id === importFile;
+      return matchVersion(id);
     },
     resolveId(id) {
-      if (id === importFile) {
+      if (matchVersion(id)) {
         return id;
       }
     },
     load(id) {
-      if (id === importFile) {
+      if (matchVersion(id)) {
         const versionInfo = generateVersionInfo(calculator);
-        return JSON.stringify(versionInfo, null, 2);
+        const json = JSON.stringify(versionInfo, null, 2);
+        const code = `export default ${json}`;
+        return code;
       }
     },
   };
 };
 
-export const unplugin = /* #__PURE__ */ createUnplugin(versionPluginFactory);
-
-export default unplugin;
+export const plugin = createUnplugin(versionPluginFactory);
