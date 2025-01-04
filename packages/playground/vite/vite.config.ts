@@ -3,7 +3,7 @@ import VersionPlugin from '@shellicar/build-version/vite';
 import { defineConfig } from 'vite';
 import Inspect from 'vite-plugin-inspect';
 
-const versionCalculator = process.env.CI ? 'dotnet-gitversion' : 'gitversion';
+const versionCalculator = process.env.CI ? 'git' : 'gitversion';
 
 const options: Options = {
   debug: true,

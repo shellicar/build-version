@@ -1,7 +1,7 @@
 import { execSync } from 'node:child_process';
 import type { VersionCalculator } from './types';
 
-type GitversionType = 'gitversion' | 'dotnet-gitversion';
+type GitversionType = 'gitversion';
 
 const gitversionCalculator = (calculator: GitversionType) => {
   return execSync(`${calculator} -showvariable SemVer`, { encoding: 'utf8' }).trim();
