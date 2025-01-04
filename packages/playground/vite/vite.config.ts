@@ -3,15 +3,11 @@ import VersionPlugin from '@shellicar/build-version/vite';
 import { defineConfig } from 'vite';
 import Inspect from 'vite-plugin-inspect';
 
-console.log('env', Object.entries(process.env));
-
-const isGithub = process.env.GITHUB_ACTIONS;
-const isCi = process.env.CI;
-console.log('test', { isGithub, isCi });
+const versionCalculator = process.env.CI ? 'dotnet-gitversion' : 'gitversion';
 
 const options: Options = {
   debug: true,
-  versionCalculator: 'gitversion',
+  versionCalculator,
   versionPath: '/build-version/dist/core/version.js$',
 };
 
