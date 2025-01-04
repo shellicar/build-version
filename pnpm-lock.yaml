@@ -105,6 +105,9 @@ importers:
       '@tsconfig/node20':
         specifier: ^20.1.4
         version: 20.1.4
+      '@types/node':
+        specifier: ^22.10.5
+        version: 22.10.5
       nodemon:
         specifier: ^3.1.9
         version: 3.1.9
