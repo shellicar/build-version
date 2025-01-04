@@ -1,6 +1,6 @@
 export type VersionCalculator = () => string;
 
-export type VersionCalculatorType = 'gitversion' | 'git' | VersionCalculator;
+export type VersionCalculatorType = 'dotnet-gitversion' | 'gitversion' | 'git' | VersionCalculator;
 
 export interface Options {
   /**

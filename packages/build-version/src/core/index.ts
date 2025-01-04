@@ -19,7 +19,7 @@ const getCalculator = (options?: Options): VersionCalculator => {
     case 'git':
       return createGitCalculator({ debug: options?.debug });
     default:
-      return createGitversionCalculator();
+      return createGitversionCalculator(options?.versionCalculator ?? 'gitversion');
   }
 };
 
