@@ -4,8 +4,8 @@ import { build } from 'esbuild';
 
 console.log('env', Object.entries(process.env));
 
-const isGithub = process.env['GITHUB_ACTIONS'];
-const isCi = process.env['CI'];
+const isGithub = process.env.GITHUB_ACTIONS;
+const isCi = process.env.CI;
 console.log('test', { isGithub, isCi });
 
 const options: Options = {
