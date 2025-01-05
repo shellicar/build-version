@@ -53,13 +53,23 @@ export const createGitCalculator = (logger: ILogger) => {
     return branch.replace(/[^a-zA-Z0-9-]/g, '-');
   };
 
+  const parseVersion = (tag: string): { major: number; minor: number; patch: number } => {
+    const [major = '0', minor = '0', patch = '0'] = tag.split('.');
+    return {
+      major: Number.parseInt(major, 10) ?? 0,
+      minor: Number.parseInt(minor, 10) ?? 0,
+      patch: Number.parseInt(patch, 10) ?? 0,
+    };
+  };
+
   return () => {
     const branch = execCommand('git rev-parse --abbrev-ref HEAD') ?? 'unknown';
     const prNumber = getPullRequestNumber(branch);
     const { tag, distance } = getVersionInfo();
 
-    if (branch === 'main' || branch === 'HEAD') {
-      return tag;
+    if (branch === 'main') {
+      const { major, minor, patch } = parseVersion(tag);
+      return `${major}.${minor}.${patch + distance}`;
     }
 
     const sanitizedBranch = prNumber ? `PullRequest-${prNumber}` : sanitizeBranchName(branch);
