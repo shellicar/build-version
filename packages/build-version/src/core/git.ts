@@ -47,7 +47,7 @@ export const createGitCalculator = (options?: { debug?: boolean }) => {
 
   const getPullRequestNumber = (branch: string): string | null => {
     const prMatch = branch.match(/^PR-(\d+)$/);
-    return prMatch ? prMatch[1] : null;
+    return (prMatch ? prMatch[1] : null) ?? null;
   };
 
   const sanitizeBranchName = (branch: string): string => {
@@ -68,7 +68,7 @@ export const createGitCalculator = (options?: { debug?: boolean }) => {
     const [major, minor, patch] = (baseVersion ?? FALLBACK_VERSION).split('.').map((n) => Number.parseInt(n, 10));
 
     if (branch === 'main') {
-      return `${major}.${minor}.${patch + commitCount - 1}`;
+      return `${major}.${minor}.${(patch ?? 0) + commitCount - 1}`;
     }
 
     const prNumber = getPullRequestNumber(branch);

@@ -8,7 +8,7 @@ const versionCalculator = process.env.CI ? 'git' : 'gitversion';
 const options: Options = {
   debug: true,
   versionCalculator,
-  versionPath: 'build-version$',
+  versionPath: 'version2\.js$'
 };
 
 export default defineConfig({

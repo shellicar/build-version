@@ -54,14 +54,24 @@
       "import": "./dist/core/types.js",
       "require": "./dist/core/types.cjs"
     },
-    "./version": {
-      "import": {
-        "types": "./types/version.d.ts",
-        "default": "./virtual:version.js"
-      },
+    "./version2": {
       "require": {
-        "types": "./types/version.d.ts",
-        "default": "./virtual:version.js"
+        "types": "./dist/core/version2.d.cts",
+        "default": "./dist/core/version2.cjs"
+      },
+      "import": {
+        "types": "./dist/core/version2.d.ts",
+        "default": "./dist/core/version2.js"
+      }
+    },
+    "./version": {
+      "require": {
+        "types": "./dist/core/version.d.cts",
+        "default": "./dist/core/version.cjs"
+      },
+      "import": {
+        "types": "./dist/core/version.d.ts",
+        "default": "./dist/core/version.js"
       }
     },
     "./*": "./*"

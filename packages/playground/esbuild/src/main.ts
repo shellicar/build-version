@@ -1,5 +1,5 @@
-import type { VersionInfo } from '@shellicar/build-version/types';
-import version from '@shellicar/build-version/version';
+import type { VersionInfo } from '@shellicar/build-version/dist/core/types';
+import version from '@shellicar/build-version/dist/core/version2';
 import { z } from 'zod';
 
 const testVersion = (v: VersionInfo) => {

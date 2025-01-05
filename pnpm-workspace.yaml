@@ -1,3 +1,4 @@
 packages:
+  - build-version
   - packages/*
   - packages/playground/*
