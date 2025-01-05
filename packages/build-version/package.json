@@ -55,8 +55,14 @@
       "require": "./dist/core/types.cjs"
     },
     "./version": {
-      "import": "./dist/core/version.js",
-      "require": "./dist/core/version.cjs"
+      "import": {
+        "types": "./types/version.d.ts",
+        "default": "./virtual:version.js"
+      },
+      "require": {
+        "types": "./types/version.d.ts",
+        "default": "./virtual:version.js"
+      }
     },
     "./*": "./*"
   },
@@ -68,7 +74,7 @@
       "*": ["./dist/*", "./*"]
     }
   },
-  "files": ["dist"],
+  "files": ["dist", "types"],
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch src",
@@ -122,7 +128,7 @@
     "rollup": "^4.29.1",
     "terser": "^5.37.0",
     "tsup": "^8.3.5",
-    "vite": "^6.0.7",
+    "vite": "^6.0.0",
     "vitest": "^2.1.8",
     "webpack": "^5.97.1"
   },

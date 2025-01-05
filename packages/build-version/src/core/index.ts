@@ -5,6 +5,7 @@ import { defaults } from './defaults';
 import { createGitCalculator } from './git';
 import { createGitversionCalculator } from './gitversion';
 import type { Options, VersionCalculator } from './types';
+import { DebugLevel } from './enums';
 
 const execCommand = (command: string): string => {
   return execSync(command, { encoding: 'utf8' }).trim();
@@ -41,11 +42,17 @@ const versionPluginFactory: UnpluginFactory<Options> = (inputOptions: Options, m
     ...defaults,
     ...inputOptions,
   };
-  const log = (message: any, ...args: any) => {
-    if (options.debug) {
-      console.log('[version]:', message, ...args);
+  const info = (message: any, ...args: any) => {
+    if (options.debug && options.debugLevel >= DebugLevel.INFO) {
+      console.info('[version]:', message, ...args);
     }
   };
+  const debug = (message: any, ...args: any) => {
+    if (options.debug && options.debugLevel >= DebugLevel.DEBUG) {
+      console.debug('[version]:', message, ...args);
+    }
+  };
+  console.log({options});
 
   const versionPattern = new RegExp(options.versionPath);
   const MODULE_ID = '@shellicar/build-version/version';
@@ -57,20 +64,36 @@ const versionPluginFactory: UnpluginFactory<Options> = (inputOptions: Options, m
     return id === MODULE_ID;
   };
 
-  log({ options });
+  info({ options });
   const calculator = getCalculator(options);
 
   return {
     name: 'version',
+    buildStart() {
+      info('Build start');
+    },
+    buildEnd() {
+      info('Build end');
+    },
+    transform(code, id) {
+      debug('transform', { code, id });
+    },
+    transformInclude(id) {
+      debug('transformInclude', id);
+      return true;
+    },
     loadInclude(id) {
+      debug('loadInclude', id);
       return matchVersion(id);
     },
     resolveId(id) {
+      debug('resoleId', id);
       if (matchVersion(id)) {
         return id;
       }
     },
     load(id) {
+      debug('load', id);
       if (matchVersion(id)) {
         const versionInfo = generateVersionInfo(calculator);
         const json = JSON.stringify(versionInfo, null, 2);

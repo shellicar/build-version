@@ -6,7 +6,9 @@ export default (<Options>{
   bundle: true,
   format: ['cjs', 'esm'],
   tsconfig: 'tsconfig',
-  dts: true,
+  dts: {
+    banner: `/// <reference path="version.d.ts" />`
+  },
   cjsInterop: true,
   treeshake: true,
   outDir: 'dist',

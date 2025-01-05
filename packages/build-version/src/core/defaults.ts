@@ -1,5 +1,7 @@
+import { DebugLevel } from './enums';
 import type { Options } from './types';
 
 export const defaults = {
-  versionPath: '@shellicar/build-version/dist/core/version\\.c?js$',
+  versionPath: 'virtual:version.js',
+  debugLevel: DebugLevel.INFO
 } satisfies Options;
