@@ -54,11 +54,11 @@ export const createGitCalculator = (logger: ILogger): VersionCalculator => {
   };
 
   const parseVersion = (tag: string): { major: number; minor: number; patch: number } => {
-    const [major = '0', minor = '0', patch = '0'] = tag.split('.');
+    const [major, minor = '0', patch = '0'] = tag.split('.');
     return {
-      major: Number.parseInt(major, 10) ?? 0,
-      minor: Number.parseInt(minor, 10) ?? 0,
-      patch: Number.parseInt(patch, 10) ?? 0,
+      major: Number.parseInt(major, 10) || 0,
+      minor: Number.parseInt(minor, 10) || 0,
+      patch: Number.parseInt(patch, 10) || 0,
     };
   };
 
