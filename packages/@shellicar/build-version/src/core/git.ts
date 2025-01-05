@@ -1,5 +1,5 @@
 import { execSync } from 'node:child_process';
-import type { ILogger } from './types';
+import type { ILogger, VersionCalculator } from './types';
 
 const FALLBACK_VERSION = '0.1.0';
 
@@ -18,7 +18,7 @@ const createExecCommand = (logger: ILogger) => {
   };
 };
 
-export const createGitCalculator = (logger: ILogger) => {
+export const createGitCalculator = (logger: ILogger): VersionCalculator => {
   const execCommand = createExecCommand(logger);
 
   const getPullRequestNumber = (branch: string): number | null => {
@@ -79,17 +79,23 @@ export const createGitCalculator = (logger: ILogger) => {
 
   return () => {
     const branch = getBranchOrRef();
+
     const prNumber = getPullRequestNumber(branch);
     const { tag, distance } = getVersionInfo();
 
+    let version: string;
     if (branch === 'main') {
       const { major, minor, patch } = parseVersion(tag);
-      return `${major}.${minor}.${patch + distance}`;
+      version = `${major}.${minor}.${patch + distance}`;
+      logger.debug('Using main branch version', { major, minor, patch, distance, version });
+    } else {
+      const sanitizedBranch = prNumber ? `PullRequest-${prNumber}` : sanitizeBranchName(branch);
+      version = `${tag}-${sanitizedBranch}.${distance}`;
+      logger.debug('Using feature branch version', { branch, sanitizedBranch, distance, version });
     }
-
-    const sanitizedBranch = prNumber ? `PullRequest-${prNumber}` : sanitizeBranchName(branch);
-    const version = `${tag}-${sanitizedBranch}.${distance}`;
-    logger.debug('Using feature branch version', { branch, sanitizedBranch, distance, version });
-    return version;
+    return {
+      version,
+      branch,
+    };
   };
 };

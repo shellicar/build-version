@@ -1,4 +1,4 @@
-export type VersionCalculator = () => string;
+export type VersionCalculator = () => { version: string; branch: string };
 
 export type VersionCalculatorType = 'gitversion' | 'git' | VersionCalculator;
 

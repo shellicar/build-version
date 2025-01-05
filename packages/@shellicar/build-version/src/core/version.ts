@@ -16,15 +16,16 @@ const getCalculator = (options: Options, logger: ILogger): VersionCalculator => 
     case 'git':
       return createGitCalculator(logger);
     default:
-      return createGitversionCalculator(options.versionCalculator ?? 'gitversion');
+      return createGitversionCalculator();
   }
 };
 
 const generateVersionInfo = (calculator: VersionCalculator) => {
-  const branch = execCommand('git rev-parse --abbrev-ref HEAD');
   const sha = execCommand('git rev-parse HEAD');
   const shortSha = sha.substring(0, 7);
   const commitDate = execCommand('git log -1 --format=%cI');
+
+  const { version, branch } = calculator();
 
   return {
     buildDate: new Date().toISOString(),
@@ -32,7 +33,7 @@ const generateVersionInfo = (calculator: VersionCalculator) => {
     sha,
     shortSha,
     commitDate,
-    version: calculator(),
+    version,
   };
 };
 
