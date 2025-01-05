@@ -2,12 +2,8 @@
   "extends": "@tsconfig/node20/tsconfig.json",
   "compilerOptions": {
     "moduleResolution": "bundler",
-    "module": "ES2022",
-    "noEmit": true,
-    "skipLibCheck": true,
-    "composite": true,
-    "tsBuildInfoFile": "node_modules/.cache/tsbuildinfo.json"
+    "module": "ES2022"
   },
   "include": ["**/*.ts"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "dist"]
 }

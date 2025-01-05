@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsx build.mts",
     "start": "node .",
-    "type-check": "tsc"
+    "type-check": "tsc -p tsconfig.check.json"
   },
   "keywords": [],
   "author": "",
