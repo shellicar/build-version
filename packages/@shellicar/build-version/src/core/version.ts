@@ -36,6 +36,7 @@ const generateVersionInfo = (calculator: VersionCalculator) => {
 export const loadVirtualModule = (options: Options, logger: ILogger) => {
   const calculator = getCalculator(options, logger);
   const versionInfo = generateVersionInfo(calculator);
+    logger.debug('Version info:', versionInfo);
   const json = JSON.stringify(versionInfo, null, 2);
   const code = `export default ${json}`;
   return code;
