@@ -1,1 +1,1 @@
-packages/build-version/CHANGELOG.md
+packages/@shellicar/build-version/CHANGELOG.md

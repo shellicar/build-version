@@ -1,7 +1,7 @@
 {
   "name": "@shellicar/build-version",
   "type": "module",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "",
   "license": "MIT",
   "homepage": "https://github.com/shellicar/build-version#readme",
@@ -55,8 +55,14 @@
       "require": "./dist/core/types.cjs"
     },
     "./version": {
-      "import": "./dist/core/version.js",
-      "require": "./dist/core/version.cjs"
+      "require": {
+        "types": "./dist/core/version.d.cts",
+        "default": "./dist/core/version.cjs"
+      },
+      "import": {
+        "types": "./dist/core/version.d.ts",
+        "default": "./dist/core/version.js"
+      }
     },
     "./*": "./*"
   },
@@ -72,6 +78,7 @@
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch src",
+    "type-check": "tsc -p tsconfig.check.json",
     "prepublishOnly": "run-s build test ci",
     "postpublish": "pnpm version --no-git-tag-version patch"
   },

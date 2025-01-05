@@ -13,6 +13,7 @@ export interface Options {
    */
   versionPath?: string;
   debug?: boolean;
+  debugLevel?: DebugLevel;
 }
 
 export interface VersionInfo {
@@ -22,4 +23,9 @@ export interface VersionInfo {
   shortSha: string;
   commitDate: string;
   version: string;
+}
+
+export enum DebugLevel {
+  DEBUG = 0,
+  INFO = 1,
 }

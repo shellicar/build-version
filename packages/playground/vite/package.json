@@ -6,7 +6,7 @@
     "dev": "nodemon -w '../src/**/*.ts' -e .ts -x vite",
     "build": "vite build",
     "start": "vite preview",
-    "check": "tsc"
+    "type-check": "tsc -p tsconfig.check.json"
   },
   "devDependencies": {
     "@shellicar/build-version": "workspace:^",
