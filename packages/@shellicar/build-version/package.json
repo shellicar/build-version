@@ -74,7 +74,7 @@
       "*": ["./dist/*", "./*"]
     }
   },
-  "files": ["dist", "types"],
+  "files": ["dist"],
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch src",

@@ -44,12 +44,12 @@ const versionPluginFactory: UnpluginFactory<Options> = (inputOptions?: Options, 
   };
   const info = (message: any, ...args: any) => {
     if (options.debug && options.debugLevel <= DebugLevel.INFO) {
-      console.info('[info][version]:', message, ...args);
+      console.info('[version] (info):', message, ...args);
     }
   };
   const debug = (message: any, ...args: any) => {
     if (options.debug && options.debugLevel <= DebugLevel.DEBUG) {
-      console.debug('[dbug][version]:', message, ...args);
+      console.debug('[version] (dbug):', message, ...args);
     }
   };
   info({ options });
@@ -58,19 +58,9 @@ const versionPluginFactory: UnpluginFactory<Options> = (inputOptions?: Options, 
 
   const matchVersion = (id: string) => {
     if (meta?.framework === 'vite') {
-      const match = versionPattern.test(id);
-      if (match) {
-        info('Found match', id);
-        return true;
-      }
-    } else {
-      const match = id === MODULE_ID;
-      if (match) {
-        info('Found match', id);
-        return true;
-      }
+      return versionPattern.test(id);
     }
-    return false;
+    return id === MODULE_ID;
   };
 
   info({ options });
@@ -83,13 +73,6 @@ const versionPluginFactory: UnpluginFactory<Options> = (inputOptions?: Options, 
     },
     buildEnd() {
       info('Build end');
-    },
-    transform(code, id) {
-      // debug('transform', { code, id });
-    },
-    transformInclude(id) {
-      // debug('transformInclude', id);
-      return true;
     },
     loadInclude(id) {
       if (matchVersion(id)) {

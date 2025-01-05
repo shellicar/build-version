@@ -1,6 +1,6 @@
 import { z } from 'zod';
-import type { VersionInfo } from '../../../@shellicar/build-version/dist/core/types';
-import version from '../../../@shellicar/build-version/dist/core/version';
+import type { VersionInfo } from '@shellicar/build-version/types';
+import version from '@shellicar/build-version/version';
 
 const testVersion = (v: VersionInfo) => {
   const schema = z.object({
