@@ -5,6 +5,7 @@
 ## Changed
 
 - Use virtual module for vite
+- Force plugin to run first with `enforce: 'pre'`
 
 ## [0.2.0] - 2025-01-05
 
