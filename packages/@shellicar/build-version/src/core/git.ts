@@ -62,8 +62,26 @@ export const createGitCalculator = (logger: ILogger) => {
     };
   };
 
+  const getBranchOrRef = (): string => {
+    const symbolicRef = execCommand('git symbolic-ref --short HEAD');
+    if (symbolicRef) {
+      return symbolicRef;
+    }
+
+    const mergeHead = execCommand('git show -s --pretty=%B');
+    if (mergeHead?.includes('Merge pull request')) {
+      const prMatch = mergeHead.match(/Merge pull request #(\d+)/);
+      if (prMatch) {
+        return `pull/${prMatch[1]}/merge`;
+      }
+    }
+
+    // Fallback to commit SHA
+    return execCommand('git rev-parse HEAD') ?? 'unknown';
+  };
+
   return () => {
-    const branch = execCommand('git rev-parse --abbrev-ref HEAD') ?? 'unknown';
+    const branch = getBranchOrRef();
     const prNumber = getPullRequestNumber(branch);
     const { tag, distance } = getVersionInfo();
 

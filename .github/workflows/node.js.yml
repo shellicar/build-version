@@ -31,6 +31,8 @@ jobs:
         cache: 'pnpm'
     - run: git branch
     - run: git log -n 10
+    - run: git symbolic-ref --short HEAD
+    - run: git show -s --pretty=%B
     - run: git tag --list
     - run: pnpm i --frozen-lockfile
     - run: pnpm run --if-present build
