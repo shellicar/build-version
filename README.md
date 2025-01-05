@@ -1,1 +1,1 @@
-packages/build-version/README.md
+packages/@shellicar/build-version/README.md

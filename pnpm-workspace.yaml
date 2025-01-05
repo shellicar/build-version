@@ -1,4 +1,3 @@
 packages:
-  - build-version
-  - packages/*
+  - packages/@shellicar/*
   - packages/playground/*

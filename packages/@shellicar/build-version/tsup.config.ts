@@ -6,6 +6,7 @@ export default (<Options>{
   bundle: true,
   format: ['cjs', 'esm'],
   tsconfig: 'tsconfig',
+  dts: true,
   cjsInterop: true,
   treeshake: true,
   outDir: 'dist',

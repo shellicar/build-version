@@ -6,10 +6,7 @@ import { createGitCalculator } from './git';
 import { createGitversionCalculator } from './gitversion';
 import type { Options, VersionCalculator } from './types';
 import { DebugLevel } from './enums';
-import packageJson from '../../package.json';
-
-const MODULE_ID = `${packageJson.name}/version2`
-
+import { MODULE_ID } from './module';
 
 const execCommand = (command: string): string => {
   return execSync(command, { encoding: 'utf8' }).trim();
@@ -42,6 +39,7 @@ const generateVersionInfo = (calculator: VersionCalculator) => {
 };
 
 const versionPluginFactory: UnpluginFactory<Options> = (inputOptions: Options, meta) => {
+  console.log(`input version2: ${inputOptions.versionPath} - ${defaults.versionPath} - ${inputOptions.versionPath === defaults.versionPath}`);
   const options = {
     ...defaults,
     ...inputOptions,

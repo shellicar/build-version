@@ -1,8 +1,6 @@
 import { DebugLevel } from './enums';
 import type { Options } from './types';
-import packageJson from '../../package.json';
-
-const versionPath = `${packageJson.name}/dist/version/version2\.c?js$`
+import { versionPath } from './module';
 
 export const defaults = {
   versionPath,

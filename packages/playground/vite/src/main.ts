@@ -1,4 +1,4 @@
-import version from '@shellicar/build-version/version2';
+import version from '../../../@shellicar/build-version/dist/core/version2';
 
 const el = document.getElementById('app');
 if (el) {
