@@ -71,7 +71,7 @@ VersionPlugin({
 
 ## Options
 
-See [types.ts](./packages/build-version/src/core/types.ts) for detailed options documentation.
+See [types.ts](./packages/@shellicar/build-version/src/core/types.ts) for detailed options documentation.
 
 ## Credits
 
