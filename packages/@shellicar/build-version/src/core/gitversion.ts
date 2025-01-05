@@ -1,14 +1,17 @@
 import { execSync } from 'node:child_process';
 import type { VersionCalculator } from './types';
 
-type GitversionType = 'gitversion';
-
-const gitversionCalculator = (calculator: GitversionType) => {
-  return execSync(`${calculator} -showvariable SemVer`, { encoding: 'utf8' }).trim();
+const gitversionCalculator = () => {
+  const version = execSync('gitversion -showvariable SemVer', { encoding: 'utf8' }).trim();
+  const branch = execSync('gitversion -showvariable BranchName', { encoding: 'utf8' }).trim();
+  return {
+    version,
+    branch,
+  };
 };
 
-export const createGitversionCalculator = (calculator: GitversionType): VersionCalculator => {
+export const createGitversionCalculator = (): VersionCalculator => {
   return () => {
-    return gitversionCalculator(calculator);
+    return gitversionCalculator();
   };
 };

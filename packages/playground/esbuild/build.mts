@@ -4,6 +4,7 @@ import { build } from 'esbuild';
 
 const options: Options = {
   versionCalculator: 'git',
+  debug: true,
 };
 
 build({

@@ -1,4 +1,4 @@
-export type VersionCalculator = () => string;
+export type VersionCalculator = () => { version: string; branch: string };
 
 export type VersionCalculatorType = 'gitversion' | 'git' | VersionCalculator;
 
@@ -8,12 +8,7 @@ export interface Options {
    * @default 'gitversion'
    */
   versionCalculator?: VersionCalculatorType;
-  /**
-   * Pattern to match the resolved version path
-   */
-  versionPath?: string;
   debug?: boolean;
-  debugLevel?: DebugLevel;
 }
 
 export interface VersionInfo {
@@ -25,7 +20,7 @@ export interface VersionInfo {
   version: string;
 }
 
-export enum DebugLevel {
-  DEBUG = 0,
-  INFO = 1,
-}
+export type ILogger = {
+  debug: (typeof console)['debug'];
+  error: (typeof console)['error'];
+};

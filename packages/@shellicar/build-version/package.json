@@ -1,7 +1,7 @@
 {
   "name": "@shellicar/build-version",
   "type": "module",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "",
   "license": "MIT",
   "homepage": "https://github.com/shellicar/build-version#readme",
@@ -12,8 +12,12 @@
   "bugs": {
     "url": "https://github.com/shellicar/build-version/issues"
   },
-  "keywords": ["build", "version", "esbuild", "vite", "webpack", "rollup", "transform"],
+  "keywords": ["build", "version", "esbuild", "vite", "webpack", "rollup", "transform", "gitversion", "git"],
   "exports": {
+    "./version": {
+      "require": "./dist/core/export.cjs",
+      "import": "./dist/core/export.js"
+    },
     ".": {
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
@@ -53,16 +57,6 @@
     "./types": {
       "import": "./dist/core/types.js",
       "require": "./dist/core/types.cjs"
-    },
-    "./version": {
-      "require": {
-        "types": "./dist/core/version.d.cts",
-        "default": "./dist/core/version.cjs"
-      },
-      "import": {
-        "types": "./dist/core/version.d.ts",
-        "default": "./dist/core/version.js"
-      }
     },
     "./*": "./*"
   },

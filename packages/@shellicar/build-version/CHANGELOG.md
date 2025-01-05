@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.2.1] - 2025-01-06
+
+## Changed
+
+- Use virtual module for vite
+- Force plugin to run first with `enforce: 'pre'`
+
+## [0.2.0] - 2025-01-05
+
+### Fixed
+
+- Issues with vite plugin
+
 ## [0.1.1] - 2025-01-05
 
 ### Fixed
