@@ -4,24 +4,23 @@ import { createUnplugin } from 'unplugin';
 import { defaults } from './defaults';
 import { createGitCalculator } from './git';
 import { createGitversionCalculator } from './gitversion';
-import type { Options, VersionCalculator } from './types';
-import { DebugLevel } from './enums';
 import { MODULE_ID } from './module';
+import { DebugLevel, type Options, type VersionCalculator } from './types';
 
 const execCommand = (command: string): string => {
   return execSync(command, { encoding: 'utf8' }).trim();
 };
 
-const getCalculator = (options?: Options): VersionCalculator => {
+const getCalculator = (options: Options): VersionCalculator => {
   if (typeof options?.versionCalculator === 'function') {
     return options.versionCalculator;
   }
 
-  switch (options?.versionCalculator) {
+  switch (options.versionCalculator) {
     case 'git':
-      return createGitCalculator({ debug: options?.debug });
+      return createGitCalculator({ debug: options.debug });
     default:
-      return createGitversionCalculator(options?.versionCalculator ?? 'gitversion');
+      return createGitversionCalculator(options.versionCalculator ?? 'gitversion');
   }
 };
 
@@ -38,8 +37,7 @@ const generateVersionInfo = (calculator: VersionCalculator) => {
   };
 };
 
-const versionPluginFactory: UnpluginFactory<Options> = (inputOptions: Options, meta) => {
-  console.log(`input version: ${inputOptions.versionPath} - ${defaults.versionPath} - ${inputOptions.versionPath === defaults.versionPath}`);
+const versionPluginFactory: UnpluginFactory<Options> = (inputOptions?: Options, meta?) => {
   const options = {
     ...defaults,
     ...inputOptions,
@@ -54,19 +52,18 @@ const versionPluginFactory: UnpluginFactory<Options> = (inputOptions: Options, m
       console.debug('[dbug][version]:', message, ...args);
     }
   };
-  info({options});
+  info({ options });
 
   const versionPattern = new RegExp(options.versionPath);
-  
+
   const matchVersion = (id: string) => {
-    if (meta.framework === 'vite') {
+    if (meta?.framework === 'vite') {
       const match = versionPattern.test(id);
       if (match) {
         info('Found match', id);
         return true;
       }
-    }
-    else {
+    } else {
       const match = id === MODULE_ID;
       if (match) {
         info('Found match', id);

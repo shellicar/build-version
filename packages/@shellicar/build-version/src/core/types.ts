@@ -1,5 +1,3 @@
-import type { DebugLevel } from "./enums";
-
 export type VersionCalculator = () => string;
 
 export type VersionCalculatorType = 'gitversion' | 'git' | VersionCalculator;
@@ -25,4 +23,9 @@ export interface VersionInfo {
   shortSha: string;
   commitDate: string;
   version: string;
+}
+
+export enum DebugLevel {
+  DEBUG = 0,
+  INFO = 1,
 }
