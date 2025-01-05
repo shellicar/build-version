@@ -39,7 +39,7 @@ const generateVersionInfo = (calculator: VersionCalculator) => {
 };
 
 const versionPluginFactory: UnpluginFactory<Options> = (inputOptions: Options, meta) => {
-  console.log(`input version2: ${inputOptions.versionPath} - ${defaults.versionPath} - ${inputOptions.versionPath === defaults.versionPath}`);
+  console.log(`input version: ${inputOptions.versionPath} - ${defaults.versionPath} - ${inputOptions.versionPath === defaults.versionPath}`);
   const options = {
     ...defaults,
     ...inputOptions,
