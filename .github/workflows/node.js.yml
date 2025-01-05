@@ -30,7 +30,8 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'pnpm'
     - run: git branch
-    - run: git log -n 1
+    - run: git log -n 10
+    - run: git tag --list
     - run: pnpm i --frozen-lockfile
     - run: pnpm run --if-present build
     - run: pnpm run --if-present test
