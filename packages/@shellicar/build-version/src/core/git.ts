@@ -21,9 +21,9 @@ const createExecCommand = (logger: ILogger) => {
 export const createGitCalculator = (logger: ILogger): VersionCalculator => {
   const execCommand = createExecCommand(logger);
 
-  const getPullRequestNumber = (branch: string): number | null => {
+  const getPullRequestNumber = (branch: string): string | null => {
     const match = branch.match(/^pull\/(\d+)\/merge$/);
-    return match ? Number.parseInt(match[1], 10) : null;
+    return match ? match[1].padStart(4, '0') : null;
   };
 
   const getVersionInfo = (): { tag: string; distance: number } => {
@@ -80,7 +80,6 @@ export const createGitCalculator = (logger: ILogger): VersionCalculator => {
   return () => {
     const branch = getBranchOrRef();
 
-    const prNumber = getPullRequestNumber(branch);
     const { tag, distance } = getVersionInfo();
 
     let version: string;
@@ -89,6 +88,7 @@ export const createGitCalculator = (logger: ILogger): VersionCalculator => {
       version = `${major}.${minor}.${patch + distance}`;
       logger.debug('Using main branch version', { major, minor, patch, distance, version });
     } else {
+      const prNumber = getPullRequestNumber(branch);
       const sanitizedBranch = prNumber ? `PullRequest-${prNumber}` : sanitizeBranchName(branch);
       version = `${tag}-${sanitizedBranch}.${distance}`;
       logger.debug('Using feature branch version', { branch, sanitizedBranch, distance, version });
