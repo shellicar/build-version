@@ -21,48 +21,50 @@ const createExecCommand = (logger: ILogger) => {
 export const createGitCalculator = (logger: ILogger) => {
   const execCommand = createExecCommand(logger);
 
-  const hasAnyTags = (): boolean => {
-    const result = execCommand('git tag --list');
-    return Boolean(result && result.length > 0);
+  const getPullRequestNumber = (branch: string): number | null => {
+    const match = branch.match(/^pull\/(\d+)\/merge$/);
+    return match ? Number.parseInt(match[1], 10) : null;
   };
 
-  const getLatestTag = (): string | null => {
-    return hasAnyTags() ? execCommand('git describe --tags --abbrev=0') : null;
+  const getVersionInfo = (): { tag: string; distance: number } => {
+    const describe = execCommand('git describe --tags --long');
+    if (!describe) {
+      return {
+        tag: FALLBACK_VERSION,
+        distance: 0,
+      };
+    }
+
+    const match = describe.match(/^(.*)-(\d+)-g[0-9a-f]+$/);
+    if (!match) {
+      return {
+        tag: FALLBACK_VERSION,
+        distance: 0,
+      };
+    }
+
+    return {
+      tag: match[1],
+      distance: Number.parseInt(match[2], 10),
+    };
   };
 
   const sanitizeBranchName = (branch: string): string => {
-    const withoutPrefix = branch.replace(/^feature\//, '');
-    return withoutPrefix.replace(/[^a-zA-Z0-9-]/g, '-');
-  };
-
-  const getCommitsSinceMainBranch = (branch: string): number => {
-    const mergeBase = execCommand(`git merge-base main ${branch}`);
-    if (!mergeBase) {
-      return 0;
-    }
-
-    const result = execCommand(`git rev-list ${mergeBase}..HEAD --count`);
-    return result ? Number.parseInt(result, 10) : 0;
+    return branch.replace(/[^a-zA-Z0-9-]/g, '-');
   };
 
   return () => {
     const branch = execCommand('git rev-parse --abbrev-ref HEAD') ?? 'unknown';
-    const baseVersion = getLatestTag();
+    const prNumber = getPullRequestNumber(branch);
+    const { tag, distance } = getVersionInfo();
 
-    if (!baseVersion) {
-      return FALLBACK_VERSION;
+    if (branch === 'main' || branch === 'HEAD') {
+      return tag;
     }
 
-    const [major, minor, patch] = baseVersion.split('.').map((n) => Number.parseInt(n, 10));
-
-    if (branch === 'main') {
-      return baseVersion;
-    }
-
-    const commitCount = getCommitsSinceMainBranch(branch);
-    const sanitizedBranch = sanitizeBranchName(branch);
-    const version = `${major}.${minor}.${patch}-${sanitizedBranch}.${commitCount}`;
-    logger.debug('Using feature branch version', { branch, sanitizedBranch, commitCount, version });
+    const sanitizedBranch = prNumber ? `PullRequest-${prNumber}` : sanitizeBranchName(branch);
+    const version = `${tag}-${sanitizedBranch}.${distance}`;
+    logger.debug('Using feature branch version', { branch, sanitizedBranch, distance, version });
     return version;
   };
 };
