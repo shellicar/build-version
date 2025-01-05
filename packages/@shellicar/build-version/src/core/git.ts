@@ -63,21 +63,18 @@ export const createGitCalculator = (logger: ILogger) => {
   };
 
   const getBranchOrRef = (): string => {
-    const symbolicRef = execCommand('git symbolic-ref --short HEAD');
-    if (symbolicRef) {
-      return symbolicRef;
+    const currentBranch = execCommand('git branch --show-current');
+    if (currentBranch) {
+      return currentBranch;
     }
 
-    const mergeHead = execCommand('git show -s --pretty=%B');
-    if (mergeHead?.includes('Merge pull request')) {
-      const prMatch = mergeHead.match(/Merge pull request #(\d+)/);
-      if (prMatch) {
-        return `pull/${prMatch[1]}/merge`;
-      }
+    const detachedHead = execCommand('git branch | grep "\\*"');
+    if (!detachedHead) {
+      return 'unknown';
     }
 
-    // Fallback to commit SHA
-    return execCommand('git rev-parse HEAD') ?? 'unknown';
+    const match = detachedHead.match(/HEAD detached at ([^)]+)/);
+    return match ? match[1] : detachedHead;
   };
 
   return () => {
