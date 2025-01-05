@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.2.1] - 2025-01-06
+
+## Changed
+
+- Use virtual module for vite
+
+## [0.2.0] - 2025-01-05
+
+### Fixed
+
+- Issues with vite plugin
+
 ## [0.1.1] - 2025-01-05
 
 ### Fixed
