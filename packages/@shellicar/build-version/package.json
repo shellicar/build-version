@@ -112,15 +112,15 @@
     }
   },
   "devDependencies": {
-    "@nuxt/kit": "^3.15.0",
-    "@nuxt/schema": "^3.15.0",
+    "@nuxt/kit": "^3.15.1",
+    "@nuxt/schema": "^3.15.1",
     "@tsconfig/node20": "^20.1.4",
     "@types/node": "^22.10.5",
     "bumpp": "^9.9.2",
     "chalk": "^5.4.1",
     "esno": "^4.8.0",
     "npm-run-all2": "^7.0.2",
-    "rollup": "^4.29.1",
+    "rollup": "^4.30.0",
     "terser": "^5.37.0",
     "tsup": "^8.3.5",
     "vite": "^6.0.7",
