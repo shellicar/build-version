@@ -10,6 +10,7 @@ Build plugin that calculates and exposes version information through a virtual m
 
 ### Core Libraries
 
+- [`@shellicar/core-config`](https://github.com/shellicar/core-config) - A library for securely handling sensitive configuration values like connection strings, URLs, and secrets.
 - [`@shellicar/core-di`](https://github.com/shellicar/core-di) - A basic dependency injection library.
 - [`@shellicar/core-foundation`](https://github.com/shellicar/core-foundation) - A comprehensive starter repository.
 
