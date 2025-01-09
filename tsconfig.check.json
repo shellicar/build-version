@@ -3,7 +3,7 @@
   "compilerOptions": {
     "noEmit": true,
     "skipLibCheck": true,
-    "composite": true,
+    "composite": false,
     "tsBuildInfoFile": "node_modules/.cache/tsbuildinfo.json"
   }
 }
