@@ -6,7 +6,7 @@
   "license": "MIT",
   "author": "Stephen Hellicar",
   "description": "Build plugin that calculates and exposes version information through a virtual module import.",
-  "keywords": ["build", "version", "esbuild", "vite", "webpack", "rollup", "transform", "gitversion", "git"],
+  "keywords": ["build", "plugin", "version", "esbuild", "vite", "gitversion", "git"],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/shellicar/build-version.git"
