@@ -1,10 +1,12 @@
 {
   "name": "@shellicar/build-version",
-  "type": "module",
+  "private": false,
   "version": "0.2.1",
-  "description": "",
+  "type": "module",
   "license": "MIT",
-  "homepage": "https://github.com/shellicar/build-version#readme",
+  "author": "Stephen Hellicar",
+  "description": "Build plugin that calculates and exposes version information through a virtual module import.",
+  "keywords": ["build", "version", "esbuild", "vite", "webpack", "rollup", "transform", "gitversion", "git"],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/shellicar/build-version.git"
@@ -12,7 +14,10 @@
   "bugs": {
     "url": "https://github.com/shellicar/build-version/issues"
   },
-  "keywords": ["build", "version", "esbuild", "vite", "webpack", "rollup", "transform", "gitversion", "git"],
+  "homepage": "https://github.com/shellicar/build-version#readme",
+  "publishConfig": {
+    "access": "public"
+  },
   "exports": {
     "./version": {
       "require": "./dist/core/export.cjs",
@@ -75,9 +80,6 @@
     "type-check": "tsc -p tsconfig.check.json",
     "prepublishOnly": "run-s build test ci",
     "postpublish": "pnpm version --no-git-tag-version patch"
-  },
-  "publishConfig": {
-    "access": "public"
   },
   "peerDependencies": {
     "@farmfe/core": ">=1",
