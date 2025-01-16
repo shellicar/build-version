@@ -1,14 +1,18 @@
 # Changelog
 
-## [1.0.0] - 2025-01-09
+## [1.0.0] - 2025-01-16
 
-## Structure
+### Structure
 
 - Use `packages` and `examples` monorepo structure
 
+### Changed
+
+- Explicitly export types.
+
 ## [0.2.1] - 2025-01-06
 
-## Changed
+### Changed
 
 - Use virtual module for vite
 - Force plugin to run first with `enforce: 'pre'`
