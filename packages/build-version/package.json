@@ -1,7 +1,7 @@
 {
   "name": "@shellicar/build-version",
   "private": false,
-  "version": "0.2.1",
+  "version": "1.0.0",
   "type": "module",
   "license": "MIT",
   "author": "Stephen Hellicar",
@@ -20,57 +20,133 @@
   },
   "exports": {
     "./version": {
-      "require": "./dist/core/export.cjs",
-      "import": "./dist/core/export.js"
+      "require": {
+        "types": "./dist/core/version.d.cts",
+        "default": "./dist/core/version.cjs"
+      },
+      "import": {
+        "types": "./dist/core/version.d.ts",
+        "default": "./dist/core/version.js"
+      }
     },
     ".": {
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      },
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
     },
     "./astro": {
-      "import": "./dist/astro.js",
-      "require": "./dist/astro.cjs"
+      "require": {
+        "types": "./dist/astro.d.cts",
+        "default": "./dist/astro.cjs"
+      },
+      "import": {
+        "types": "./dist/astro.d.ts",
+        "default": "./dist/astro.js"
+      }
     },
     "./rspack": {
-      "import": "./dist/rspack.js",
-      "require": "./dist/rspack.cjs"
+      "require": {
+        "types": "./dist/rspack.d.cts",
+        "default": "./dist/rspack.cjs"
+      },
+      "import": {
+        "types": "./dist/rspack.d.ts",
+        "default": "./dist/rspack.js"
+      }
     },
     "./vite": {
-      "import": "./dist/vite.js",
-      "require": "./dist/vite.cjs"
+      "require": {
+        "types": "./dist/vite.d.cts",
+        "default": "./dist/vite.cjs"
+      },
+      "import": {
+        "types": "./dist/vite.d.ts",
+        "default": "./dist/vite.js"
+      }
     },
     "./webpack": {
-      "import": "./dist/webpack.js",
-      "require": "./dist/webpack.cjs"
+      "require": {
+        "types": "./dist/webpack.d.cts",
+        "default": "./dist/webpack.cjs"
+      },
+      "import": {
+        "types": "./dist/webpack.d.ts",
+        "default": "./dist/webpack.js"
+      }
     },
     "./rollup": {
-      "import": "./dist/rollup.js",
-      "require": "./dist/rollup.cjs"
+      "require": {
+        "types": "./dist/rollup.d.cts",
+        "default": "./dist/rollup.cjs"
+      },
+      "import": {
+        "types": "./dist/rollup.d.ts",
+        "default": "./dist/rollup.js"
+      }
     },
     "./esbuild": {
-      "import": "./dist/esbuild.js",
-      "require": "./dist/esbuild.cjs"
+      "require": {
+        "types": "./dist/esbuild.d.cts",
+        "default": "./dist/esbuild.cjs"
+      },
+      "import": {
+        "types": "./dist/esbuild.d.ts",
+        "default": "./dist/esbuild.js"
+      }
     },
     "./nuxt": {
-      "import": "./dist/nuxt.js",
-      "require": "./dist/nuxt.cjs"
+      "require": {
+        "types": "./dist/nuxt.d.cts",
+        "default": "./dist/nuxt.cjs"
+      },
+      "import": {
+        "types": "./dist/nuxt.d.ts",
+        "default": "./dist/nuxt.js"
+      }
     },
     "./farm": {
-      "import": "./dist/farm.js",
-      "require": "./dist/farm.cjs"
+      "require": {
+        "types": "./dist/farm.d.cts",
+        "default": "./dist/farm.cjs"
+      },
+      "import": {
+        "types": "./dist/farm.d.ts",
+        "default": "./dist/farm.js"
+      }
     },
     "./types": {
-      "import": "./dist/core/types.js",
-      "require": "./dist/core/types.cjs"
+      "require": {
+        "types": "./dist/core/types.d.cts",
+        "default": "./dist/core/types.cjs"
+      },
+      "import": {
+        "types": "./dist/core/types.d.ts",
+        "default": "./dist/core/types.js"
+      }
     },
-    "./*": "./*"
+    "./package.json": "./package.json"
   },
-  "main": "dist/index.cjs",
-  "module": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "typesVersions": {
     "*": {
-      "*": ["./dist/*", "./*"]
+      "version": ["./dist/core/export.d.ts"],
+      "astro": ["./dist/astro.d.ts"],
+      "rspack": ["./dist/rspack.d.ts"],
+      "vite": ["./dist/vite.d.ts"],
+      "webpack": ["./dist/webpack.d.ts"],
+      "rollup": ["./dist/rollup.d.ts"],
+      "esbuild": ["./dist/esbuild.d.ts"],
+      "nuxt": ["./dist/nuxt.d.ts"],
+      "farm": ["./dist/farm.d.ts"],
+      "types": ["./dist/core/types.d.ts"],
+      "*": ["./dist/*"]
     }
   },
   "files": ["dist"],
