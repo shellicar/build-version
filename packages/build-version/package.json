@@ -1,7 +1,7 @@
 {
   "name": "@shellicar/build-version",
   "private": false,
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "license": "MIT",
   "author": "Stephen Hellicar",
@@ -21,12 +21,12 @@
   "exports": {
     "./version": {
       "require": {
-        "types": "./dist/core/version.d.cts",
-        "default": "./dist/core/version.cjs"
+        "types": "./dist/core/export.d.cts",
+        "default": "./dist/core/export.cjs"
       },
       "import": {
-        "types": "./dist/core/version.d.ts",
-        "default": "./dist/core/version.js"
+        "types": "./dist/core/export.d.ts",
+        "default": "./dist/core/export.js"
       }
     },
     ".": {
