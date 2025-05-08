@@ -9,6 +9,12 @@ export interface Options {
    */
   versionCalculator?: VersionCalculatorType;
   debug?: boolean;
+  /**
+   * When true, errors will be thrown if versioning fails
+   * When false, errors will be logged and empty values will be returned
+   * @default false
+   */
+  strict?: boolean;
 }
 
 export interface VersionInfo {
