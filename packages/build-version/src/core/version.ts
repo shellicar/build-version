@@ -16,7 +16,7 @@ const getCalculator = (options: Options, logger: ILogger): VersionCalculator => 
     case 'git':
       return createGitCalculator(logger);
     default:
-      return createGitversionCalculator();
+      return createGitversionCalculator(options);
   }
 };
 
