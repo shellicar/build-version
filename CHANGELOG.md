@@ -52,6 +52,7 @@ Fix missing README
 
 Initial release.
 
+[1.2.0]: https://github.com/shellicar/build-version/releases/tag/1.2.0
 [1.1.0]: https://github.com/shellicar/build-version/releases/tag/1.1.0
 [1.0.1]: https://github.com/shellicar/build-version/releases/tag/1.0.1
 [1.0.0]: https://github.com/shellicar/build-version/releases/tag/1.0.0
