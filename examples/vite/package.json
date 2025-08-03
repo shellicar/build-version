@@ -10,11 +10,11 @@
   },
   "devDependencies": {
     "@shellicar/build-version": "workspace:^",
-    "@tsconfig/node20": "^20.1.4",
-    "@types/node": "^22.10.5",
-    "nodemon": "^3.1.9",
-    "typescript": "^5.7.2",
-    "vite": "^6.0.14",
-    "vite-plugin-inspect": "^0.10.6"
+    "@tsconfig/node20": "^20.1.6",
+    "@types/node": "^24.1.0",
+    "nodemon": "^3.1.10",
+    "typescript": "^5.9.2",
+    "vite": "^7.0.6",
+    "vite-plugin-inspect": "^11.3.2"
   }
 }
