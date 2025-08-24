@@ -1,3 +1,4 @@
+import cleanPlugin from '@shellicar/build-clean/esbuild';
 import versionPlugin from '@shellicar/build-version/esbuild';
 import type { Options } from '@shellicar/build-version/types';
 import { defineConfig } from 'tsup';
@@ -12,18 +13,18 @@ const pluginOptions = {
 } satisfies Options;
 
 export default defineConfig(() => ({
-  entry: ['src/main.ts'],
-  splitting: true,
-  sourcemap: false,
-  treeshake: true,
-  dts: false,
-  clean: false,
-  minify: false,
-  keepNames: true,
   bundle: true,
-  tsconfig: 'tsconfig.json',
-  target: 'node22',
+  clean: false,
+  dts: false,
+  entry: ['src/main.ts'],
+  esbuildPlugins: [cleanPlugin({ destructive: true }), versionPlugin(pluginOptions)],
   format: ['cjs'],
+  keepNames: true,
+  minify: false,
   outDir: 'dist',
-  esbuildPlugins: [versionPlugin(pluginOptions)],
+  sourcemap: false,
+  splitting: true,
+  target: 'node22',
+  treeshake: true,
+  tsconfig: 'tsconfig.json',
 }));

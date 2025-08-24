@@ -10,6 +10,7 @@
     "type-check": "tsc -p tsconfig.check.json"
   },
   "devDependencies": {
+    "@shellicar/build-clean": "1.0.0-preview.5",
     "@shellicar/build-version": "workspace:^",
     "@tsconfig/node22": "^22.0.2",
     "@types/node": "^24.3.0",
