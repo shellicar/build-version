@@ -4,7 +4,7 @@ import { z } from 'zod';
 
 const testVersion = (v: VersionInfo) => {
   const schema = z.object({
-    buildDate: z.string().datetime(),
+    buildDate: z.iso.datetime(),
     branch: z.string().min(1),
     sha: z.string().length(40),
     shortSha: z.string().length(7),

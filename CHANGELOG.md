@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.3.0] - 2025-08-24
+
+### Changed
+
+- Updated all dependencies to latest versions
+
 ## [1.2.0] - 2025-08-03
 
 ### Changed
@@ -52,6 +58,7 @@ Fix missing README
 
 Initial release.
 
+[1.3.0]: https://github.com/shellicar/build-version/releases/tag/1.3.0
 [1.2.0]: https://github.com/shellicar/build-version/releases/tag/1.2.0
 [1.1.0]: https://github.com/shellicar/build-version/releases/tag/1.1.0
 [1.0.1]: https://github.com/shellicar/build-version/releases/tag/1.0.1
