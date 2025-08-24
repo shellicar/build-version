@@ -22,7 +22,7 @@ export const createGitCalculator = (logger: ILogger): VersionCalculator => {
   const execCommand = createExecCommand(logger);
 
   const getPullRequestNumber = (branch: string): string | null => {
-    const match = branch.match(/^(pull|pull\-requests|pr)[/-](\d+)/);
+    const match = branch.match(/^(pull|pull-requests|pr)[/-](\d+)/);
     return match ? match[2].padStart(4, '0') : null;
   };
 
