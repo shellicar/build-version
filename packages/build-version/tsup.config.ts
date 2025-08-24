@@ -1,31 +1,32 @@
 import cleanPlugin from '@shellicar/build-clean/esbuild';
 import { defineConfig, type Options } from 'tsup';
 
-const commonOptions = (watch: Options['watch']) =>
+const commonOptions = (config: Options) =>
   ({
-    entry: ['src/**/*.ts'],
-    clean: false,
     bundle: true,
-    tsconfig: 'tsconfig.json',
+    clean: false,
     dts: true,
-    cjsInterop: true,
-    treeshake: true,
-    minify: watch ? 'terser' : false,
-    sourcemap: true,
-    keepNames: true,
-    splitting: true,
+    entry: ['src/**/*.ts'],
     esbuildPlugins: [cleanPlugin({ destructive: true })],
+    keepNames: true,
+    minify: config.watch ? false : 'terser',
+    removeNodeProtocol: false,
+    sourcemap: true,
+    splitting: true,
+    target: 'node22',
+    treeshake: true,
+    tsconfig: 'tsconfig.json',
   }) satisfies Options;
 
-export default defineConfig((options) => [
+export default defineConfig((config) => [
   {
-    ...commonOptions(options.watch),
-    format: ['esm'],
+    ...commonOptions(config),
+    format: 'esm',
     outDir: 'dist/esm',
   },
   {
-    ...commonOptions(options.watch),
-    format: ['cjs'],
+    ...commonOptions(config),
+    format: 'cjs',
     outDir: 'dist/cjs',
   },
 ]);
