@@ -1,4 +1,4 @@
-import { type UnpluginFactory, createUnplugin } from 'unplugin';
+import { createUnplugin, type UnpluginFactory } from 'unplugin';
 import { defaults } from './defaults';
 import { virtualModuleId } from './module';
 import type { ILogger, Options } from './types';
@@ -25,7 +25,10 @@ const pluginFactory: UnpluginFactory<Options> = (inputOptions) => {
     resolveId(id) {
       if (id === virtualModuleId) {
         debug('resolveId %s', id);
-        return resolveVirtualId(virtualModuleId);
+        return {
+          id: resolveVirtualId(virtualModuleId),
+          external: false,
+        };
       }
     },
     load(id) {

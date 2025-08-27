@@ -1,6 +1,5 @@
-import type { Options } from './core/types';
-
 import { plugin } from './core';
+import type { Options } from './core/types';
 
 export default (options: Options): any => ({
   name: 'build-version',
