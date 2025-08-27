@@ -18,13 +18,13 @@ const createExecCommand = (logger: ILogger) => {
   };
 };
 
+export const getPullRequestNumber = (branch: string): string | null => {
+  const match = branch.match(/^(pull|pull-requests|pr)[/-](\d+)/);
+  return match ? match[2].padStart(4, '0') : null;
+};
+
 export const createGitCalculator = (logger: ILogger): VersionCalculator => {
   const execCommand = createExecCommand(logger);
-
-  const getPullRequestNumber = (branch: string): string | null => {
-    const match = branch.match(/^(pull|pull-requests|pr)[/-](\d+)/);
-    return match ? match[2].padStart(4, '0') : null;
-  };
 
   const getVersionInfo = (): { tag: string; distance: number } => {
     const describe = execCommand('git describe --tags --long');

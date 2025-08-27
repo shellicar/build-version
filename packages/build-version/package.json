@@ -185,6 +185,7 @@
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch src",
+    "test": "vitest run",
     "type-check": "tsc -p tsconfig.check.json",
     "prepublishOnly": "run-s build test ci",
     "postpublish": "pnpm version --no-git-tag-version patch"
