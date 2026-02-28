@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.3.4] - 2026-02-28
+
+### Security
+
+- Fixed [GHSA-3ppc-4f35-3m26](https://github.com/advisories/GHSA-3ppc-4f35-3m26) in minimatch
+- Fixed [GHSA-7r86-cg39-jmmj](https://github.com/advisories/GHSA-7r86-cg39-jmmj) in minimatch
+- Fixed [GHSA-23c5-xmqv-rm74](https://github.com/advisories/GHSA-23c5-xmqv-rm74) in minimatch
+- Fixed [GHSA-mw96-cpmx-2vgc](https://github.com/advisories/GHSA-mw96-cpmx-2vgc) in rollup
+- Fixed [GHSA-7gcc-r8m5-44qm](https://github.com/advisories/GHSA-7gcc-r8m5-44qm) in koa
+- Fixed [GHSA-5c6j-r48x-rmvq](https://github.com/advisories/GHSA-5c6j-r48x-rmvq) in serialize-javascript
+- Fixed [GHSA-2g4f-4pwh-qvx6](https://github.com/advisories/GHSA-2g4f-4pwh-qvx6) in ajv
+
+### Changed
+
+- Updated rollup to 4.59, @shellicar/build-clean to 1.2.3
+- Updated all dependencies to latest versions
+
 ## [1.3.3] - 2026-02-05
 
 ### Security
@@ -81,6 +98,7 @@ Fix missing README
 
 Initial release.
 
+[1.3.4]: https://github.com/shellicar/build-version/releases/tag/1.3.4
 [1.3.3]: https://github.com/shellicar/build-version/releases/tag/1.3.3
 [1.3.2]: https://github.com/shellicar/build-version/releases/tag/1.3.2
 [1.3.1]: https://github.com/shellicar/build-version/releases/tag/1.3.1
