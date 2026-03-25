@@ -28,13 +28,13 @@
   },
   "exports": {
     "./version": {
-      "require": {
-        "types": "./dist/cjs/core/export.d.cts",
-        "default": "./dist/cjs/core/export.cjs"
-      },
       "import": {
         "types": "./dist/esm/core/export.d.ts",
         "default": "./dist/esm/core/export.js"
+      },
+      "require": {
+        "types": "./dist/cjs/core/export.d.cts",
+        "default": "./dist/cjs/core/export.cjs"
       }
     },
     ".": {
@@ -48,93 +48,93 @@
       }
     },
     "./astro": {
-      "require": {
-        "types": "./dist/cjs/astro.d.cts",
-        "default": "./dist/cjs/astro.cjs"
-      },
       "import": {
         "types": "./dist/esm/astro.d.ts",
         "default": "./dist/esm/astro.js"
+      },
+      "require": {
+        "types": "./dist/cjs/astro.d.cts",
+        "default": "./dist/cjs/astro.cjs"
       }
     },
     "./rspack": {
-      "require": {
-        "types": "./dist/cjs/rspack.d.cts",
-        "default": "./dist/cjs/rspack.cjs"
-      },
       "import": {
         "types": "./dist/esm/rspack.d.ts",
         "default": "./dist/esm/rspack.js"
+      },
+      "require": {
+        "types": "./dist/cjs/rspack.d.cts",
+        "default": "./dist/cjs/rspack.cjs"
       }
     },
     "./vite": {
-      "require": {
-        "types": "./dist/cjs/vite.d.cts",
-        "default": "./dist/cjs/vite.cjs"
-      },
       "import": {
         "types": "./dist/esm/vite.d.ts",
         "default": "./dist/esm/vite.js"
+      },
+      "require": {
+        "types": "./dist/cjs/vite.d.cts",
+        "default": "./dist/cjs/vite.cjs"
       }
     },
     "./webpack": {
-      "require": {
-        "types": "./dist/cjs/webpack.d.cts",
-        "default": "./dist/cjs/webpack.cjs"
-      },
       "import": {
         "types": "./dist/esm/webpack.d.ts",
         "default": "./dist/esm/webpack.js"
+      },
+      "require": {
+        "types": "./dist/cjs/webpack.d.cts",
+        "default": "./dist/cjs/webpack.cjs"
       }
     },
     "./rollup": {
-      "require": {
-        "types": "./dist/cjs/rollup.d.cts",
-        "default": "./dist/cjs/rollup.cjs"
-      },
       "import": {
         "types": "./dist/esm/rollup.d.ts",
         "default": "./dist/esm/rollup.js"
+      },
+      "require": {
+        "types": "./dist/cjs/rollup.d.cts",
+        "default": "./dist/cjs/rollup.cjs"
       }
     },
     "./esbuild": {
-      "require": {
-        "types": "./dist/cjs/esbuild.d.cts",
-        "default": "./dist/cjs/esbuild.cjs"
-      },
       "import": {
         "types": "./dist/esm/esbuild.d.ts",
         "default": "./dist/esm/esbuild.js"
+      },
+      "require": {
+        "types": "./dist/cjs/esbuild.d.cts",
+        "default": "./dist/cjs/esbuild.cjs"
       }
     },
     "./nuxt": {
-      "require": {
-        "types": "./dist/cjs/nuxt.d.cts",
-        "default": "./dist/cjs/nuxt.cjs"
-      },
       "import": {
         "types": "./dist/esm/nuxt.d.ts",
         "default": "./dist/esm/nuxt.js"
+      },
+      "require": {
+        "types": "./dist/cjs/nuxt.d.cts",
+        "default": "./dist/cjs/nuxt.cjs"
       }
     },
     "./farm": {
-      "require": {
-        "types": "./dist/cjs/farm.d.cts",
-        "default": "./dist/cjs/farm.cjs"
-      },
       "import": {
         "types": "./dist/esm/farm.d.ts",
         "default": "./dist/esm/farm.js"
+      },
+      "require": {
+        "types": "./dist/cjs/farm.d.cts",
+        "default": "./dist/cjs/farm.cjs"
       }
     },
     "./types": {
-      "require": {
-        "types": "./dist/cjs/types.d.cts",
-        "default": "./dist/cjs/types.cjs"
-      },
       "import": {
         "types": "./dist/esm/types.d.ts",
         "default": "./dist/esm/types.js"
+      },
+      "require": {
+        "types": "./dist/cjs/types.d.cts",
+        "default": "./dist/cjs/types.cjs"
       }
     },
     "./package.json": "./package.json"
@@ -180,7 +180,8 @@
     }
   },
   "files": [
-    "dist"
+    "dist",
+    "*.md"
   ],
   "scripts": {
     "build": "tsup",
