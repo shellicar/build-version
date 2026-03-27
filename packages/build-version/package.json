@@ -194,7 +194,7 @@
     "@farmfe/core": ">=1",
     "@nuxt/kit": "^3",
     "@nuxt/schema": "^3",
-    "esbuild": "*",
+    "esbuild": "^0.27",
     "rollup": "^3",
     "vite": "^6",
     "webpack": "^4 || ^5"
@@ -230,6 +230,7 @@
     "@types/node": "^25.5.0",
     "bumpp": "^10.4.1",
     "chalk": "^5.6.2",
+    "esbuild": "^0.27.4",
     "esno": "^4.8.0",
     "npm-run-all2": "^8.0.4",
     "rollup": "^4.60.0",
