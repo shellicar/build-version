@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.3.5] - 2026-03-28
+
+### Security
+
+- Fixed [GHSA-38f7-945m-qr2g](https://github.com/advisories/GHSA-38f7-945m-qr2g) in effect
+- Fixed [GHSA-c2c7-rcm5-vvqj](https://github.com/advisories/GHSA-c2c7-rcm5-vvqj) in picomatch
+- Fixed [GHSA-3v7f-55p6-f55p](https://github.com/advisories/GHSA-3v7f-55p6-f55p) in picomatch
+- Fixed [GHSA-48c2-rrv3-qjmp](https://github.com/advisories/GHSA-48c2-rrv3-qjmp) in yaml
+- Fixed [GHSA-f886-m6hf-6m8v](https://github.com/advisories/GHSA-f886-m6hf-6m8v) in brace-expansion
+
+### Changed
+
+- Updated @shellicar/build-clean to 1.3.2
+- Updated all dependencies to latest versions
+
 ## [1.3.4] - 2026-02-28
 
 ### Security
@@ -98,6 +113,7 @@ Fix missing README
 
 Initial release.
 
+[1.3.5]: https://github.com/shellicar/build-version/releases/tag/1.3.5
 [1.3.4]: https://github.com/shellicar/build-version/releases/tag/1.3.4
 [1.3.3]: https://github.com/shellicar/build-version/releases/tag/1.3.3
 [1.3.2]: https://github.com/shellicar/build-version/releases/tag/1.3.2
