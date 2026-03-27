@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.3.6] - 2026-03-28
+
+### Changed
+
+- Pinned esbuild version to silence false Dependabot CVE alerts
+
 ## [1.3.5] - 2026-03-28
 
 ### Security
@@ -113,6 +119,7 @@ Fix missing README
 
 Initial release.
 
+[1.3.6]: https://github.com/shellicar/build-version/releases/tag/1.3.6
 [1.3.5]: https://github.com/shellicar/build-version/releases/tag/1.3.5
 [1.3.4]: https://github.com/shellicar/build-version/releases/tag/1.3.4
 [1.3.3]: https://github.com/shellicar/build-version/releases/tag/1.3.3
